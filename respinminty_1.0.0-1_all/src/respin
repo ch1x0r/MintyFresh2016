@@ -237,6 +237,12 @@ if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf-custom ]; then
 echo "  " > $WORKDIR/dummysys/etc/gdm/gdm.conf-custom
 fi
 
+if [ "$1" = "dist" ]; then
+#fix for buggy debian live setup of mdm
+if [ -f $WORKDIR/dummysys/etc/mdm/mdm.conf ]; then
+sed -i -e '/AutomaticLoginEnable/d' $WORKDIR/dummysys/etc/mdm/mdm.conf
+fi
+
 if [ -f /etc/X11/default-display-manager ]; then
 
 if [ "$SHOWICON" = "1" ]; then
@@ -275,6 +281,7 @@ rm -f $WORKDIR/dummysys/etc/cups/printers.conf
 touch $WORKDIR/dummysys/etc/printcap
 touch $WORKDIR/dummysys/etc/cups/printers.conf
 rm -rf $WORKDIR/dummysys/var/cache/gdm/*
+rm -rf $WORKDIR/dummysys/var/cache/mdm/*
 rm -rf $WORKDIR/dummysys/var/lib/sudo/*
 rm -rf $WORKDIR/dummysys/var/run/console/*
 rm -f $WORKDIR/dummysys/var/lib/kdm/kdmsts
@@ -292,6 +299,7 @@ find $WORKDIR/dummysys/var/run $WORKDIR/dummysys/var/log $WORKDIR/dummysys/var/m
 
 #further cleanup
 rm -rf $WORKDIR/dummysys/var/cache/gdm/*
+rm -rf $WORKDIR/dummysys/var/cache/mdm/*
 rm -rf $WORKDIR/dummysys/var/tmp/kdecache*
 rm -rf $WORKDIR/dummysys/var/spool/gfax/*
 rm -rf $WORKDIR/dummysys/var/run/gdm3/*
@@ -421,7 +429,7 @@ echo "export LIVE_USERNAME=\"$LIVEUSER\"" > /etc/live/config.conf
 echo "export LIVE_USER_FULLNAME=\"Live session user\"" >> /etc/live/config.conf
 echo "export LIVE_HOSTNAME=\"$LIVEUSER\"" >> /etc/live/config.conf
 if [ "$1" = "backup" ]; then
-echo "export LIVE_NOCONFIGS=\"user-setup,sudo,locales,locales-all,tzdata,gdm,gdm3,kdm,lightdm,lxdm,nodm,slim,keyboard-configuration,gnome-panel-data,gnome-power-manager,gnome-screensaver,kde-services,debian-installer-launcher,login\"" >> /etc/live/config.conf
+echo "export LIVE_NOCONFIGS=\"user-setup,sudo,locales,locales-all,tzdata,gdm,gdm3,kdm,lightdm,lxdm,mdm,nodm,slim,keyboard-configuration,gnome-panel-data,gnome-power-manager,gnome-screensaver,kde-services,debian-installer-launcher,login\"" >> /etc/live/config.conf
 fi
 
 
