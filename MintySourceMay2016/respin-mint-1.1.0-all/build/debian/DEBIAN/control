@@ -1,0 +1,11 @@
+Package: respin-mint
+Version: 1.1.0-1
+Section: Desktop
+Priority: optional
+Architecture: all
+Depends: memtest86+, coreutils, dialog, mkisofs | genisoimage, findutils, bash, passwd, sed, squashfs-tools, casper, rsync, mount, eject, libdebian-installer4, os-prober, ubiquity-frontend-debconf, user-setup, discover1 | discover, laptop-detect, syslinux, util-linux, xresprobe
+Suggests: respin-gui
+Maintainer: Respin Team <contact@linuxrespin.org>
+Description: Ubuntu and variant system remaster This script creates a livecd of the installed system. You can either make a distributable livecd or backup of your system. For more information, please visit http://www.linuxrespin.org
+Installed-size: 194
+Homepage: http://www.linuxrespin.org/

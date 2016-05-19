@@ -1,0 +1,39 @@
+.TH RESPIN 1 "May 18 2016" 
+.SH NAME
+respin \- script to make a bootable and installable live cd or dvd
+.SH SYNOPSIS
+respin backup|clean|dist [cdfs|iso] [filename.iso]
+.br
+respin backup
+.br
+respin clean
+.br
+respin dist
+.br
+.br
+ 
+.SH DESCRIPTION
+respin is a script used to make a bootable live cd or dvd from an
+installed Ubuntu system or derivative.
+.PP
+This manual page documents
+.BR respin .
+.B respin
+Makes a live cd or dvd iso file from and installed system
+.SS OPTIONS
+.TP
+.I backup
+Makes a complete system backup including the user folders.
+.TP
+.I clean
+Cleans the temporary build directory.
+.TP
+.I dist
+Makes system backup minus the user folders.
+.SH AUTHOR
+Marcia Wilbur - Copyright (c) 2016
+.SH BUG REPORT
+Report bugs to contact@linuxrespin.org
+.SH URL
+http://www.linuxrespin.org
+
